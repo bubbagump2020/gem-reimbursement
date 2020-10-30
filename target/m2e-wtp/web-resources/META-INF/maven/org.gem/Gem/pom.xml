@@ -58,6 +58,7 @@
 	    <version>2.13.3</version>
  	</dependency>
   </dependencies>
+  <!-- 
  	<build>
  		<plugins>
  			<plugin>
@@ -117,4 +118,5 @@
  			</plugin>
  		</plugins>
  	</reporting>
+ 	 -->
 </project>
