@@ -4,7 +4,7 @@ function renderTable(reimbursement){
             id: parseInt(event.target.id),
             status: event.target.innerHTML
         }
-        const response = await fetch("http://localhost:8081/Gem/update_reimbursement.json", {
+        const response = await fetch("http://3.138.155.76:8081/update_reimbursement.json", {
             method: "put",
             headers: {
                 "Accept": "application/json",

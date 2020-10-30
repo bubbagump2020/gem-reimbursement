@@ -22,17 +22,17 @@ public class RoutingServlet extends HttpServlet {
 	public void whichRoute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //		System.out.println(request.getSession().getAttribute("userId"));
 		switch(request.getRequestURI()) {
-			case "/Gem/user.page":
+			case "/user.page":
 				response.sendRedirect("html/user.html");
 				break;
-			case "/Gem/login.page":
+			case "/login.page":
 				new DwarfController().login(request, response);
 				break;
-			case "/Gem/logout.page":
+			case "/logout.page":
 				request.getSession().invalidate();
 				response.sendRedirect("html/index.html");
 				break;
-			case "/Gem/create-user.page":
+			case "/create-user.page":
 				new DwarfController().create(request, response);
 				break;
 			default:
@@ -43,16 +43,16 @@ public class RoutingServlet extends HttpServlet {
 	
 	public void returnData(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		switch(request.getRequestURI()) {
-			case "/Gem/reimbursement.json":
+			case "/reimbursement.json":
 				new ReimbursementController().create(request, response);
 				break;
-			case "/Gem/user_reimbursements.json":
+			case "/user_reimbursements.json":
 				new ReimbursementController().sendUserAll(request, response);
 				break;
-			case "/Gem/all_reimbursements.json":
+			case "/all_reimbursements.json":
 				new ReimbursementController().sendAll(request, response);
 				break;
-			case "/Gem/update_reimbursement.json":
+			case "/update_reimbursement.json":
 				new ReimbursementController().update(request, response);
 				break;
 		}
