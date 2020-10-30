@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DwarfController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gem</a> &gt; <a href="index.source.html" class="el_package">com.gem.controller</a> &gt; <span class="el_source">DwarfController.java</span></div><h1>DwarfController.java</h1><pre class="source lang-java linenums">package com.gem.controller;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gem.models.Dwarf;
+import com.gem.services.DwarfService;
+
+public class DwarfController {
+<span class="nc" id="L16">	private DwarfService ds = new DwarfService();</span>
+
+<span class="nc" id="L18">	public DwarfController(DwarfService ds) {</span>
+<span class="nc" id="L19">		this.ds = ds;</span>
+<span class="nc" id="L20">	}</span>
+
+<span class="nc" id="L22">	public DwarfController() {</span>
+		// TODO Auto-generated constructor stub
+<span class="nc" id="L24">	}</span>
+	// rewrite this method to mirror login
+	public void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+<span class="nc" id="L27">		HttpSession session = req.getSession(true);</span>
+<span class="nc" id="L28">		session.setAttribute(&quot;email&quot;, req.getParameter(&quot;loginEmail&quot;));</span>
+<span class="nc" id="L29">		Dwarf d = new Dwarf(req.getParameter(&quot;createEmail&quot;), req.getParameter(&quot;createUsername&quot;), req.getParameter(&quot;createPassword&quot;));</span>
+<span class="nc" id="L30">		int result = ds.create(d);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">		if(result == 0) {</span>
+<span class="nc" id="L32">			resp.sendRedirect(&quot;html/user.html&quot;);</span>
+		} else {
+<span class="nc" id="L34">			resp.sendRedirect(&quot;html/index.html&quot;);</span>
+		}
+		
+<span class="nc" id="L37">	}</span>
+	
+	public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+<span class="nc" id="L40">		Dwarf d = new Dwarf(request.getParameter(&quot;loginEmail&quot;), request.getParameter(&quot;loginPassword&quot;));</span>
+<span class="nc" id="L41">		d = ds.findByUsernamePassword(d);</span>
+<span class="nc" id="L42">		request.getSession().setAttribute(&quot;userId&quot;, d.getId());</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">		if(d != null) {</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">			if(d.getRole().equals(&quot;overseer&quot;)) {</span>
+<span class="nc" id="L45">				System.out.println(&quot;hitting the overseer true&quot;);</span>
+<span class="nc" id="L46">				response.sendRedirect(&quot;html/overseer.html&quot;);</span>
+			} else {
+<span class="nc" id="L48">				response.sendRedirect(&quot;html/user.html&quot;);</span>
+			}
+		} else {
+<span class="nc" id="L51">			response.sendRedirect(&quot;html/index.html&quot;);</span>
+		}
+<span class="nc" id="L53">	}</span>
+	
+	public void update(HttpServletRequest req, HttpServletResponse resp) {
+		
+<span class="nc" id="L57">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
