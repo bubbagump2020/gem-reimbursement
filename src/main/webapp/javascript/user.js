@@ -36,7 +36,7 @@ function renderTable(reimbursement){
 }
 
 async function getReimbursementsOnWindowLoad(){
-    const response = await fetch("http://localhost:8081/Gem/user_reimbursements.json")
+    const response = await fetch("http://3.138.155.76:8081/user_reimbursements.json")
     if(response.status === 200){
         const data = await response.json();
         data.map(element => {
