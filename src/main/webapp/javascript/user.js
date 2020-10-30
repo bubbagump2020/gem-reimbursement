@@ -55,7 +55,7 @@ async function handleSubmit(event){
         type: document.getElementById('materials').value
     }
     console.log(reimbursement)
-    const response = await fetch("http://localhost:8081/Gem/reimbursement.json", {
+    const response = await fetch("http://3.138.155.76:8081/reimbursement.json", {
         method: 'post',
         headers: {
             'X-Requested-With': 'XmlHttpRequest',
