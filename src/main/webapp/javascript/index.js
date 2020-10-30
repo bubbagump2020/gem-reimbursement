@@ -10,7 +10,7 @@ async function handleLoginSubmit(e){
 		email: document.getElementById('loginEmail').value,
 		password: document.getElementById('loginPassword').value
 	}
-	let response = await fetch('http://localhost:8081/Gem/login', {
+	let response = await fetch('http://3.138.155.76:8081/login.page', {
 		method: 'post',
 		headers: {
 			'X-Requested-With': 'XmlHttpRequest',
@@ -39,7 +39,7 @@ async function handleCreateSubmit(){
 		username: document.getElementById('createUsername').value,
 		password: document.getElementById('createPassword')
 	}
-	const response = await fetch('http://localhost:8081/Gem/create-dwarf.json', {
+	const response = await fetch('http://3.138.155.76:8081/create-dwarf.json', {
 		method: 'put',
 		headers: {
 			'X-Requested-With': 'XmlHttpRequest',
