@@ -34,19 +34,19 @@ public class DwarfDaoTest {
 		assertNotNull(d);
 	}
 	
-	@Test
-	public void createTest() {
-		Faker faker = new Faker();
-		String email = faker.animal().name();
-		String username = faker.ancient().hero();
-		Dwarf d = new Dwarf(
-					email,
-					username,
-					"password"
-				);
-		int result = dd.create(d);
-		assertEquals(0, result);
-	}
+//	@Test
+//	public void createTest() {
+//		Faker faker = new Faker();
+//		String email = faker.animal().name();
+//		String username = faker.ancient().hero();
+//		Dwarf d = new Dwarf(
+//					email,
+//					username,
+//					"password"
+//				);
+//		int result = dd.create(d);
+//		assertEquals(0, result);
+//	}
 	
 	@Test
 	public void updateDwarfTest() {
